@@ -11,12 +11,12 @@ class StringDataTest {
   @Test
   void read() throws Exception {
     Data<String> ds = new StringData();
-//    assertThrows(MismatchDataException.class,() -> ds.read("abc"));
-//    assertThrows(MismatchDataException.class,() -> ds.read("\"abc"));
-//    assertThrows(MismatchDataException.class,() -> ds.read("abc\""));
-//    assertThrows(MismatchDataException.class,() -> ds.read("a\"bc\""));
-//    assertThrows(MismatchDataException.class,() -> ds.read("\"ab\"c"));
-//    assertThrows(MismatchDataException.class,() -> ds.read("\"a\\\"b\"\\c\""));
+//    assertThrows(DataMismatchException.class,() -> ds.read("abc"));
+//    assertThrows(DataMismatchException.class,() -> ds.read("\"abc"));
+//    assertThrows(DataMismatchException.class,() -> ds.read("abc\""));
+//    assertThrows(DataMismatchException.class,() -> ds.read("a\"bc\""));
+//    assertThrows(DataMismatchException.class,() -> ds.read("\"ab\"c"));
+//    assertThrows(DataMismatchException.class,() -> ds.read("\"a\\\"b\"\\c\""));
 //    assertEquals("",ds.read("\"\""));
     assertEquals("abc",ds.read("\"abc\""));
     assertEquals("a\\bc",ds.read("\"a\\\\bc\""));
