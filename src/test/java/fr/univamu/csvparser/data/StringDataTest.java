@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StringDataTest {
 
   @Test
-  void read() { // throws DataMismatchException {
+  void read() throws Exception {
     Data<String> ds = new StringData();
 //    assertThrows(MismatchDataException.class,() -> ds.read("abc"));
 //    assertThrows(MismatchDataException.class,() -> ds.read("\"abc"));
@@ -27,7 +27,7 @@ class StringDataTest {
   }
 
   @Test
-  void format() { // } throws DataMismatchException {
+  void format() throws Exception {
     List<String> words = List.of(
       "", "abc", "\"abc\"",
       "ab\"cd", "a\r\n\tb","\"a\\\"\"",
