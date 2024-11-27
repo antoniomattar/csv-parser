@@ -2,6 +2,7 @@ package fr.univamu.csvparser.data;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class DateData implements Data<LocalDate> {
@@ -18,15 +19,18 @@ public class DateData implements Data<LocalDate> {
 
 
   @Override
-  public LocalDate read(String text) {
-    // TODO
-    return null;
+  public LocalDate read(String text) throws DataMismatchException {
+    try{
+      return LocalDate.parse(text, formatter);
+    } catch (DateTimeParseException e2) {
+      throw new DataMismatchException("date", text, e2);
+    }
+
 
   }
 
   @Override
   public String format(LocalDate data) {
-    // TODO
-    return null;
+    return data.format(formatter);
   }
 }

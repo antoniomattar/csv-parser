@@ -5,13 +5,12 @@ import java.time.LocalDate;
 
 public interface Data<T> {
 
-  // TODO initialiser les 4 constantes
-  Data<Integer> INT = null;
-  Data<String> STRING = null;
-  Data<Double> DOUBLE = null;
-  Data<LocalDate> DATE = null;
+  Data<Integer> INT = new IntData() ;
+  Data<String> STRING = new StringData() ;
+  Data<Double> DOUBLE = new DoubleData();
+  Data<LocalDate> DATE = new DateData() ;
 
-  T read(String text); // TODO ajouter déclaration d'exception
+  T read(String text) throws DataMismatchException ;
   String format(T data);
 
 }
