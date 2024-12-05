@@ -40,5 +40,4 @@ class CsvLineReaderTest {
     assertThrows(Exception.class, () -> product.read("-4.,0,45"));
     // assertThrows(Exception.class, () -> product.read("-4.,0,45,734,56"));
   }
-
 }

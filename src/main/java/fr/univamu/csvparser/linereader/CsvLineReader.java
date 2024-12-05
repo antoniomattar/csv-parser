@@ -1,6 +1,11 @@
 package fr.univamu.csvparser.linereader;
 
 
+import fr.univamu.csvparser.data.DataMismatchException;
+
+import java.util.Iterator;
+import java.util.Scanner;
+
 public class CsvLineReader<R,S> implements LineReader<R> {
 
   private final LineDescription<S,R> lineDescription;
@@ -14,8 +19,11 @@ public class CsvLineReader<R,S> implements LineReader<R> {
   }
 
   @Override
-  public R read(String line)  {
-    // TODO
-    return null;
+  public R read(String line) throws DataMismatchException {
+    try (Scanner scanner = new Scanner(line)) {
+      scanner.useDelimiter(separator);
+      Iterator<String> tokens = scanner.tokens().iterator();
+      return lineDescription.read(s,tokens);
+    }
   }
 }

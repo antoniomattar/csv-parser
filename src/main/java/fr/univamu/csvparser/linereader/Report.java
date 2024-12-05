@@ -5,24 +5,39 @@ import fr.univamu.csvparser.linereader.exceptions.LineReaderException;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Report<T> implements Iterable<T>{
+public class Report<T> implements Iterable<T> {
 
   private final LineReader<T> lineReader;
-  // TODO ajouter des propriétés avec accesseurs
+  private final List<T> lines;
+  private final List<LineReaderException> exceptions;
+  private final int linecount;
 
 
   public Report(LineReader<T> lineReader) {
     this.lineReader = lineReader;
+    this.lines = new ArrayList<>();
+    this.exceptions = new ArrayList<>();
+    this.linecount = 0;
   }
 
+////  public List<T> getLines(){
+////    return lines;
+////  }
+//
+//  public int getLineCount(){
+//    return linecount;
+//  }
+//  public List<LineReaderException> getException(){
+//    return exceptions;
+
   public static <T> Report<T> fromFile(
-    Path path,
-    LineReader<T> lineReader,
-    int skippedLines
+          Path path,
+          LineReader<T> lineReader,
+          int skippedLines
   ) throws IOException {
     // TODO
     return null;
@@ -35,12 +50,12 @@ public class Report<T> implements Iterable<T>{
 
   public List<T> getLines() {
     // TODO
-    return null;
+    return lines;
   }
 
   public List<LineReaderException> getExceptions() {
     // TODO
-    return null;
+    return exceptions;
   }
 
 
@@ -57,7 +72,7 @@ public class Report<T> implements Iterable<T>{
   @Override
   public Iterator<T> iterator() {
     // TODO
-    return null;
+    return lines.iterator();
   }
 
 }
